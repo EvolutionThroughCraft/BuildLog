@@ -1,0 +1,21 @@
+2018.12.09::17:59
+So thinkging...
+
+Having micro services which are self-contained and trade json back and forth is fine for server talking to UI, but runs face first into type-issues when the broker wants an Account object and receives receives a json-string.
+
+...the ideal solution I can imagine is
+
+In the commons repo (which all the services include) there is an "api" package which holds java-interfaces defining all an objects getters.
+
+There is also some <magic> code which
+--you pass [ json-blob + Class<api-interface> ]
+and it
+--definies a pojo w/ [ attributes + getters + setters ] based on getters in the interface
+--has the pojo implement the interface
+--parses the json
+--assigns the json to the pojo (matching key to attribute name) w/ type conversion
+
+
+This can also ensure syncronisity on the DB side by having the DB-entities implement the API interface defined in common (at the cost of not being able to use the @Getters annotation in order to add the @Override to the method --which I think is totally reasonable)
+
+Now the next thought is...   this seems like such a straight forward and useful idea, I'm sure someone must have already built this magic code...  right?
