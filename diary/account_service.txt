@@ -1,0 +1,8 @@
+2018.12.09:dwin357++++++++++++++++++++++++++++++++
+Adding application.properties to .gitignore on account of not wanting to push db-details to public repo.
+
+per SO from 2yr ago :: https://stackoverflow.com/questions/37404703/spring-boot-how-to-hide-passwords-in-properties-file
+--apparently this is not a solved problem..?
+
+gitignore is definitly a cheat, will need to talk to others about what long term solution should be
+2018.12.09:dwin357================================
