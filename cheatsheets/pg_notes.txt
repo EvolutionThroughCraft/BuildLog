@@ -1,0 +1,43 @@
+
+Nuke / Fresh Start
+	$ sudo apt purge postgresql*
+
+Install
+	$ sudo apt install postgresql
+
+Tail Logs
+	$ tail -f /var/log/postgresql/postgresql-10-main.log
+
+Check Status
+	$ /etc/init.d/postgresql status
+
+Set password for postgres user
+	$ sudo -u postgres psql postgres
+	postgres=# \password postgres
+	<enter password twice>
+	postgres=# \q
+
+Setup new User
+	$ sudo -u postgres createuser --interactive --password <username>
+	<...> superuser? n
+	<...> create db? y
+	<...> create roles? n
+	password
+
+Setup first DB (owned by user; option is capital.letter-O)
+	$ sudo -u postgres createdb <dbName> -O <username>
+
+Change local and local host to trusted
+	$ sudo vim /etc/postgresql/10/main/pg_hba.conf
+	>>edit to the following 
+		# "local" is for Unix domain socket connections only
+		local   all             all                                     trust
+		# IPv4 local connections:
+		host    all             all             127.0.0.1/32            trust
+
+Restart Server (needed to pick up changes)
+	$ sudo service postgresql restart
+
+Start the DB & keep it running (so it can be written to)
+	$ psql -U <user> -d <db> -W
+
