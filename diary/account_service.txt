@@ -1,4 +1,43 @@
 2018.12.09:dwin357++++++++++++++++++++++++++++++++
+16:54
+	worked w/ local build + remote db -- good milestone
+	
+16:29
+	much more promising resource::https://springbootdev.com/2018/03/13/spring-data-jpa-auditing-with-createdby-createddate-lastmodifiedby-and-lastmodifieddate/
+
+--so when we impl security, we can use that to get user :: for now going back to manual entry of user
+
+--looks like the issue was I was missing 
+@EnableJpaAuditing in the main file
+
+16:11
+trying local run or account (pointing at RDS), stamps did not set timestamps.  
+	- Looking at the poms, take-4 was using 2.1.0 while account was using 2.1.1
+	...this did not fix the problem
+
+	- In the new (non-working) copy, I added Lombok @Getter & @Setter... maybe the setter is messing w/ something?
+	-->nope
+
+15:51
+@Column can accept arg "nullable=false" & updatable=false
+...there seems to be an ~= to nullable w/ @NotBlank
+but I can't find anything to match updateable=false
+
+
+15:00
+I would like to pull everything in <prj>.service.common.*
+out into some kind of abstraction, so that it can be used by the other services.  
+For now though, since there is only account, I think the package-naming is specific enough
+
+14:45
+using baeldung to set up the controller
+url: https://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration#controller
+
+using lombok to set up getters + setters
+url: https://www.baeldung.com/intro-to-project-lombok
+
+
+12:30
 Adding application.properties to .gitignore on account of not wanting to push db-details to public repo.
 
 per SO from 2yr ago :: https://stackoverflow.com/questions/37404703/spring-boot-how-to-hide-passwords-in-properties-file
