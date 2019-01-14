@@ -1,0 +1,21 @@
+1/21/19
+	Ron: Jenkins + 1 click deployment
+	Edwin: MVP Server side + document UI
+	Evan: Locally running mock server
+	Demos: Jenkins - Build/run/plug in server (having it working is a hope not a need)
+1/28/19 MLK Day
+	Ron: Config server
+	Edwin: Set up in memory DB for local deploy - also DB migrations
+	Demos: fully working MVP with server+ui+kubernetes
+	also discuss goals for the 11th and moving on from MVP
+2/4/19 -- no Edwin
+2/11/19
+2/18/19 -- no Ron
+2/25/19
+
+Long term goals for prioritization:
+	Adding sessions behaviour
+	Adding P2P workflow -currently person to broker
+	Integrate typed JSON in angular (Avro)
+	Kafka/ActiveMQX
+	Camel
