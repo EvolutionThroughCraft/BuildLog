@@ -12,7 +12,18 @@
 Meeting minutes:
 	New EC2 Instance -> Edwin a1.large spot instance (US East Ohio) should be ~$.01 per hour
 
-2/4/19 -- no Edwin
+2/4/19
+tasks for next week:
+	Ron:	finish config server, deploy to t2.micro
+		Start on jenkins jobs to build image and deploy to kubernetes
+	Edwin:	Angular heroes
+		Swagger
+		Flyway(localDB) -primary
+	Evan:	Add middleware
+=================================================================
+Meeting minutes:
+	Jenkins works!
+	Angular middleware
 2/11/19
 2/18/19 -- no Ron
 2/25/19
