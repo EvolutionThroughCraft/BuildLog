@@ -1,3 +1,70 @@
+2019.01.05::1227
+	Just completed writing the final micro-service, and when I went to build it I discovered the RDS is not responding.
+
+	Rather than try to fix the RDS, this seemed like a perfect time to figure out how to set things up so that local builds + tests run using an in-memory db, and prod builds + ci-tests use the pg db.
+
+	this looks like it covers how to set up profiles, so that we can have domain specific properties
+	url:http://www.springboottutorial.com/spring-boot-profiles
+
+	possible preasure point, it looks like spring might do some auto-config of data source, so I might need to claw back that responsibility in order to make profiles work
+
+	This looks like a possible impl of H2
+	url: https://dzone.com/articles/integrate-h2-database-in-your-spring-boot-applicat
+	>> smoke test by commenting out hibernate lines in app.prop
+	>>> smoke test seemed to work
+
+
+2019.01.01::1807
+	New year, going to be fun remembering to write that.
+	So we had an issue which roughly broke down as...
+	 - maven build, per default, runs unit tests & fails builds if unit test fails
+	 - Spring-boot adds a smoke test unit test to make sure the context builds
+	 - given current hibernate configuration pointing at RDS, this unit test fails if your local can't connect to the RDS
+	 - RDS is currently locked down to only accept requests for known IPs
+	 ... so builds are failing when working away from config IP
+
+	 Obviously this shouldn't be the case, and for development (especially of a showcase project) the standard should probably be "anyone can clone + build + run the application using an in-memory db (ie documenting db-struct w/ migrations which can easily be run for dev) & also have these changes be integrated with hibernate for prod.
+
+	 flyway :: this looks like it could be a thing
+	 url :: https://flywaydb.org/documentation/articles
+
+
+2018.12.15::14:17
+	I'm losing focus, writing code w/out feedback; need to refocus
+	
+
+2018.12.14::18:36
+	I think the goal for today / this weekend is...
+	- setup transaction api
+	- drop "starting balance" from account (keep current-balance)
+	-- account-deposits will be a transaction where giver-id is.. [ null? "bank"? ]
+	-- account-withdrawls will be a transaction where receiver-id is [..]
+	- change "account create" to make a deposit with starting balance
+	- change "account update" so a user can not modify their current balance
+	- make transaction call a seperate route to update an account's "current balance"
+	...this multi-api logic sounds like a prime candidate for "operations" + "contracts"
+
+2018.12.10::07:55
+	[ angular + spring ] demo :: https://dzone.com/articles/java-8-springboot-angularjs-bootstrap-springdata-j
+
+2018.12.09::21:08
+So this is definitly getting into the Dark-Arts of reflection, but...
+
+url: https://stackoverflow.com/questions/5178391/create-simple-pojo-classes-bytecode-at-runtime-dynamically
+
+This code suggests how to, given a map of ( String name, Class<?> type ) 
+-- generate a pojo class w/ interface & getters + setters
+
+
+For the second part
+Class clazz = Something.class;
+Method[] methods = clazz.getDeclaredMethods();
+for (Method method : methods) {
+    // do what you have to do with the method
+    System.out.println(method.getName());
+} 
+
+
 2018.12.09::17:59
 So thinkging...
 
