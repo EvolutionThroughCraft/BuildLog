@@ -1,0 +1,37 @@
+1/21/19 MLK Day
+	Ron: Jenkins + 1 click deployment
+	Edwin: MVP Server side + document UI
+	Evan: Locally running mock server
+	Demos: Jenkins - Build/run/plug in server (having it working is a hope not a need)
+1/28/19
+	Ron: Config server
+	Edwin: Set up in memory DB for local deploy - also DB migrations
+	Demos: fully working MVP with server+ui+kubernetes
+	also discuss goals for the 11th and moving on from MVP
+=================================================================
+Meeting minutes:
+	New EC2 Instance -> Edwin a1.large spot instance (US East Ohio) should be ~$.01 per hour
+
+2/4/19
+tasks for next week:
+	Ron:	finish config server, deploy to t2.micro
+		Start on jenkins jobs to build image and deploy to kubernetes
+	Edwin:	Angular heroes
+		Swagger
+		Flyway(localDB) -primary
+	Evan:	Add middleware
+=================================================================
+Meeting minutes:
+	Jenkins works!
+	Angular middleware
+2/11/19
+2/18/19 -- no Ron
+2/25/19
+
+Long term goals for prioritization:
+	Spin up and down spot instance using config server running on free-tier on-demand instance
+	Adding sessions behaviour
+	Adding P2P workflow -currently person to broker
+	Integrate typed JSON in angular (Avro)
+	Kafka/ActiveMQX
+	Camel
